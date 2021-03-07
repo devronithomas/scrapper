@@ -11,6 +11,7 @@
      > * 2 = Relevance
      > * 3 = Popularity
      > * 4 = Newest First
+- Excel Sheet will be created and stored in the same location as script.
 
 ## Libraries Used
 ```python
