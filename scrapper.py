@@ -3,7 +3,7 @@
 #imports
 import re #regx to format text
 from openpyxl import Workbook # r/w excel file
-import time
+import time #to introduce a delay
 from selenium import webdriver #browser
 from selenium.webdriver.common.by import By #by class to use XPATH
 
@@ -25,20 +25,20 @@ except:
         pass
 
 #filters
-sort = int(input('''Press Enter for Default
+sort = input('''Press Enter for Default
 Sort Price or Relevance By:
 0 = Low to High
 1 = High to Low
 2 = Relevance
 3 = Popularity
 4 = Newest First
-'''))
+''')
 def sort_by_price_relevance(sort=2): #filters
     if sort == 0:
         driver.find_element_by_xpath("//div[contains(@class, '_10UF8M') and text()='Price -- Low to High']").click() #click low to high
     elif sort == 1:
         driver.find_element_by_xpath("//div[contains(@class, '_10UF8M') and text()='Price -- High to Low']").click() #click high to low
-    elif sort == 2:
+    elif sort == 2: #default
         driver.find_element_by_xpath("//div[contains(@class, '_10UF8M') and text()='Relevance']").click() #click relevance
     elif sort == 3:
         driver.find_element_by_xpath("//div[contains(@class, '_10UF8M') and text()='Popularity']").click() #click popularity
@@ -48,7 +48,7 @@ def sort_by_price_relevance(sort=2): #filters
 print("Getting results")
 
 #creating a web driver
-driver_path="C:\\Users\\ronit\\Desktop\\Python\\Apps\\gocomet\\chromedriver.exe"
+driver_path="chromedriver.exe"
 driver=webdriver.Chrome(executable_path=driver_path)
 
 #search in browser
