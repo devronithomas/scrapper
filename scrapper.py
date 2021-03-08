@@ -9,20 +9,16 @@ from selenium.webdriver.common.by import By #by class to use XPATH
 
 #user inputs
 search_name = "samsung mobile"
-results = input('''Press Enter for Default
-Number of products (>10): ''')
+results = int(input('''Press Enter for Default
+Number of products (>10): '''))
 
-try:
-    if results == "":
-        results = 10
-except:
-    if results < 10:
-        results = 10
-    elif results > 73:
-        print ("out of range")
-        quit()
-    else:
-        pass
+if results < 10:
+    results = 10
+elif results > 73:
+    print ("out of range")
+    quit()
+else:
+    pass
 
 #filters
 sort = input('''Press Enter for Default
@@ -95,10 +91,10 @@ def populate():
         features.append(feature.text)
         # print (phone_name, price.text)
 
-if results < 25:
+if int(results) < 25:
     print ("Capturing Page 1")
     populate() #calls populate function
-elif results < 49:
+elif int(results) < 49:
     print ("Capturing Page 1")
     populate()
     print ("Capturing Page 2")
@@ -106,7 +102,7 @@ elif results < 49:
     driver.implicitly_wait(10)
     time.sleep(1) #delay
     populate()
-elif results < 73:
+elif int(results) < 73:
     print ("Capturing Page 1")
     populate()
     print ("Capturing Page 2")
