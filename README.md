@@ -12,6 +12,7 @@
      > * 3 = Popularity
      > * 4 = Newest First
 - Excel Sheet will be created and stored in the same location as script.
+- please turn on `wrap text` in excel to have a better look at the details captured.
 
 ## Libraries Used
 ```python
