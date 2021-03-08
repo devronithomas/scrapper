@@ -68,7 +68,7 @@ driver.find_element(By.XPATH, "//input[contains(@class, '_3704LK')]").send_keys(
 driver.find_element(By.XPATH, "//button[contains(@class, 'L0Z3Pu')]").click() #click search button
 
 #creating list to store phone, variant, price
-phones, storage, ratings, prices_flipkart = [], [], [], []
+phones, storage, ratings, features, prices_flipkart = [], [], [], [], []
 
 #looping to populate the list
 def populate():
@@ -77,8 +77,9 @@ def populate():
     phones_fk = driver.find_elements(By.XPATH, "//div[contains(@class, '_4rR01T')] | //div[contains(@class, 's1Q9rs')]")#creating list of all avilable phones
     prices_fk = driver.find_elements(By.XPATH, "//div[contains(@class, '_30jeq3 _1_WHN1')] | //div[contains(@class, '_30jeq3')]")#creating list of prices
     user_rating = driver.find_elements(By.XPATH, "//div[contains(@class, '_3LWZlK')]")#Ratings
+    description = driver.find_elements(By.XPATH, "//ul[contains(@class, '_1xgFaf')]")#features
 
-    for phone,price,rating in zip(phones_fk, prices_fk, user_rating):
+    for phone,price,rating,feature in zip(phones_fk, prices_fk, user_rating, description):
         phone_name= re.sub(r"[\(\[].*?[\)\]]","", phone.text)#formating phone name
         phones.append(phone_name) #adding name to list
 
@@ -91,6 +92,7 @@ def populate():
             # print("N/A")
         prices_flipkart.append(price.text) #appending price to list
         ratings.append(rating.text)
+        features.append(feature.text)
         # print (phone_name, price.text)
 
 if results < 25:
@@ -119,7 +121,7 @@ elif results < 73:
     populate()
 
 #combining retrived info
-details = zip(phones[:results], storage[:results+1], ratings[:results+1], prices_flipkart[:results+1]) #retreving only required results
+details = zip(phones[:results], storage[:results+1], ratings[:results+1], features[:results+1], prices_flipkart[:results+1]) #retreving only required results
 
 #looping above list
 # for data in list(details): #converting zip object to list
@@ -131,7 +133,7 @@ sh = wb.active
 
 print ("Populating Excel")
 
-sh.append(["Name", "Storage", "Rating", "Price"])
+sh.append(["Name", "Storage", "Rating", "Feature", "Price"])
 for data in list(details): #converting zip object to list
     sh.append(data)
 
