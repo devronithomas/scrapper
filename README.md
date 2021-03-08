@@ -4,7 +4,7 @@
 - Run the py file `scrapper.py`
 - When prompted enter the following
    - Search term preferably `Samsung mobile or Apple mobiles`
-   - Expected number of products in the result. For default press `Enter` default value is 10. Max value is 72.
+   - Expected number of products in the result. For default enter `0` default value is 10. Max value is 72.
   - Provide a value in between `0-4` to sort the product listing on the webpage. Sort by relevance is set to default.
      > * 0 = Low to High
      > * 1 = High to Low
