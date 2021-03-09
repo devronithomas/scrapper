@@ -35,6 +35,13 @@ from selenium.webdriver.common.by import By #by class to use XPATH
 
 > Users can sort by the following options. Only one can be chosen at the time because Flipkart supports only one at a time.
 
+> Unlike Amazon, in Flipkart Pincode can be entered only on buying page, since it wasn’t possible to show that part in the script, it will be jotted down here:
+```python
+driver.find_element(By.XPATH, "//input[contains(@class, '_36yFo0')]").send_keys(“400072”) #this will copy the pin code in the text box  
+driver.find_element(By.XPATH, "//span[contains(@class, '_2P_LDn')]").click() #click the check button
+```
+The location of the particular input and buttons are searched by using `XPATH`.
+
 #### PROBLEM 3
 
 > To keep the entire process like human behavior delay and time gaps are introduced in the required part of the code like clicking the search button, navigating pages for more results, and so on. 
